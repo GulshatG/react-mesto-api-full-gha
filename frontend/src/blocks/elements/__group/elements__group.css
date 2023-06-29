@@ -1,0 +1,14 @@
+.elements__group {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 29px 22px 19px;
+}
+
+@media screen and (max-width: 425px) {
+  .elements__group {
+    padding-bottom: 25px;
+    padding-right: 13px;
+  }
+}

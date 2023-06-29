@@ -1,0 +1,32 @@
+.elements__name {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 210px;
+}
+
+@media screen and (max-width: 1024px) {
+  .elements__name {
+    max-width: 160px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .elements__name {
+    font-size: 15px;
+    max-width: 90px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .elements__name {
+    font-size: 24px;
+    max-width: 210px;
+  }
+}

@@ -1,0 +1,21 @@
+.profile__avatar-edit {
+  position: absolute;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url("../../../images/pen.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+}
+.profile__avatar-edit:hover {
+  opacity: 1;
+}

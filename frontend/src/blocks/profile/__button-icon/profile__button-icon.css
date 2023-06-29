@@ -1,0 +1,19 @@
+.profile__button-icon {
+  width: 22px;
+  height: 22px;
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__button-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile__button-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
