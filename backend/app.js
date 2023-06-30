@@ -31,6 +31,7 @@ const allowedCors = [
   'https://gulshat-express.nomoreparties.sbs',
   'https://158.160.114.23',
   'http://158.160.114.23',
+  'gulshat-express.nomoreparties.sbs'
 ];
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {});
