@@ -42,6 +42,6 @@ class UserApi extends Api {
 }
 
 export default new UserApi({
-  url: 'https://gulshat-express.nomoreparties.sbs/me',
+  url: 'https://api.gulshat-express.nomoreparties.sbs/me',
   auth: "83b38506-64f5-462f-9bf3-410e2163a0f8",
 });
