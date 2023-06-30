@@ -47,7 +47,7 @@ class CardApi extends Api {
 }
 
 const cardApi = new CardApi({
-  url: 'https://gulshat-express.nomoreparties.sbs/cardss',
+  url: 'https://gulshat-express.nomoreparties.sbs/cards',
   auth: "83b38506-64f5-462f-9bf3-410e2163a0f8",
 });
 export default cardApi;
