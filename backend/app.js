@@ -48,9 +48,10 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', requestHeaders);
     return res.end();
   }
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+  // if (allowedCors.includes(origin)) {
+  //   res.header('Access-Control-Allow-Origin', origin);
+  // }
+  res.header('Access-Control-Allow-Origin', "*");
   return next();
 });
 
