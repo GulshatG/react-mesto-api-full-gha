@@ -20,6 +20,7 @@ class CardApi extends Api {
         authorization: this._auth,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         name: name,
         link: link,
@@ -33,6 +34,7 @@ class CardApi extends Api {
       headers: {
         authorization: this._auth,
       },
+      credentials: "include"
     }).then(this._checkResponse);
   }
 
@@ -43,6 +45,7 @@ class CardApi extends Api {
       headers: {
         authorization: this._auth,
       },
+      credentials: "include"
     }).then(this._checkResponse);
   }
 }

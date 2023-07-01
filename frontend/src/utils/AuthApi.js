@@ -12,6 +12,7 @@ class AuthApi extends Api {
         authorization: this._auth,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         email,
         password,
@@ -26,6 +27,7 @@ class AuthApi extends Api {
         authorization: this._auth,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         email,
         password,

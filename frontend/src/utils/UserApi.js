@@ -21,6 +21,7 @@ class UserApi extends Api {
         authorization: this._auth,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         name: name,
         about: feature,
@@ -35,6 +36,7 @@ class UserApi extends Api {
         authorization: this._auth,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         avatar: link,
       }),
