@@ -10,6 +10,7 @@ class UserApi extends Api {
       headers: {
         authorization: this._auth,
       },
+      credentials: 'include'
     }).then(this._checkResponse);
   }
 
