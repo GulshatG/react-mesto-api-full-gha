@@ -39,6 +39,7 @@ class AuthApi extends Api {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
+      credentials: "include"
     }).then(this._checkResponse);
   }
 }

@@ -10,6 +10,7 @@ class CardApi extends Api {
       headers: {
         authorization: this._auth,
       },
+      credentials: 'include'
     }).then(this._checkResponse);
   }
   addCard({ name, link }) {
