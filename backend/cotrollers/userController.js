@@ -60,6 +60,7 @@ module.exports.login = (req, res, next) => {
     email,
     password,
   } = req.body;
+  logger.info('In login method')
   User.findOne({email})
     .select('+password')
     .orFail(new WrongCredentials(ValidationMessage.credentials))
@@ -68,6 +69,7 @@ module.exports.login = (req, res, next) => {
         if (!matched) {
           return Promise.reject(new WrongCredentials(ValidationMessage.credentials));
         }
+        logger.info('try to create token');
         const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
         logger.info(`token is ${token}`);
 
