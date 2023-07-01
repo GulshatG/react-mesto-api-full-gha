@@ -6,7 +6,6 @@ const ValidationMessage = require('../utils/validationMessage');
 const WrongCredentials = require('../exceptions/wrongCredentials');
 const {emailExist} = require('../utils/validationMessage');
 const EmailExist = require('../exceptions/emailExist');
-const {logger} = require('../middlewares/logger');
 
 function findUserById(userId, res, next) {
   User.findById(userId)
@@ -68,7 +67,6 @@ module.exports.login = (req, res, next) => {
         if (!matched) {
           return Promise.reject(new WrongCredentials(ValidationMessage.credentials));
         }
-        logger.info('try to create token');
         const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
 
         res.cookie('token', token, {
