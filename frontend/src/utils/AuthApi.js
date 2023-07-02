@@ -1,4 +1,5 @@
 import Api from "./Api";
+import {serverMod,serverUrl,localhostUrl} from "./ServerConfig";
 
 class AuthApi extends Api {
   constructor({ url, auth }) {
@@ -47,6 +48,6 @@ class AuthApi extends Api {
 }
 
 export default new AuthApi({
-  url: 'https://api.gulshat-express.nomoreparties.sbs',
+  url: serverMod === 'dev' ? localhostUrl : serverUrl,
   auth: "83b38506-64f5-462f-9bf3-410e2163a0f8",
 });

@@ -20,12 +20,16 @@ const PageNotFound = require('./exceptions/pageNotFound');
 const {pageNotFound} = require('./utils/validationMessage');
 const {requestLogger, errorLogger} = require('./middlewares/logger');
 
-// Слушаем 3000 порт
+
 const {PORT = 3000} = process.env;
 
 const app = express();
 
-const allowedCors = ['http://gulshat-express.nomoreparties.sbs', 'https://gulshat-express.nomoreparties.sbs',];
+const allowedCors = [
+  'http://gulshat-express.nomoreparties.sbs',
+  'https://gulshat-express.nomoreparties.sbs',
+  'http://localhost:3001'
+];
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {});
 
@@ -42,10 +46,8 @@ app.use((req, res, next) => {
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.header('Access-Control-Allow-Credentials', 'true');
     return res.end();
   }
-
   return next();
 });
 
@@ -53,6 +55,11 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(requestLogger);
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrateLogin, login);
 app.post('/signup', celebrateCreateUser, createUser);

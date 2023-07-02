@@ -67,7 +67,8 @@ module.exports.login = (req, res, next) => {
         if (!matched) {
           return Promise.reject(new WrongCredentials(ValidationMessage.credentials));
         }
-        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
+        const key = process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev';
+        const token = jwt.sign({_id: user._id}, key, {expiresIn: '7d'});
 
         res.cookie('token', token, {
           maxAge: 3600000 * 24 * 7,
