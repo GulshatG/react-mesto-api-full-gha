@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.114.23
+IP 158.160.114.23
 
 Frontend https://gulshat-express.nomoreparties.sbs
 
