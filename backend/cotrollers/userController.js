@@ -4,7 +4,7 @@ const User = require('../models/user');
 const handleOkStatus = require('../utils/handleOkStatus');
 const ValidationMessage = require('../utils/validationMessage');
 const WrongCredentials = require('../exceptions/wrongCredentials');
-const {emailExist} = require('../utils/validationMessage');
+const { emailExist } = require('../utils/validationMessage');
 const EmailExist = require('../exceptions/emailExist');
 
 function findUserById(userId, res, next) {
@@ -46,7 +46,7 @@ module.exports.updateProfile = (req, res, next) => {
     .catch(next);
 };
 module.exports.updateAvatar = (req, res, next) => {
-  User.findByIdAndUpdate(req.user._id, {avatar: req.body.avatar}, {
+  User.findByIdAndUpdate(req.user._id, { avatar: req.body.avatar }, {
     new: true,
     runValidators: true,
   })
@@ -59,7 +59,7 @@ module.exports.login = (req, res, next) => {
     email,
     password,
   } = req.body;
-  User.findOne({email})
+  User.findOne({ email })
     .select('+password')
     .orFail(new WrongCredentials(ValidationMessage.credentials))
     .then((user) => bcrypt.compare(password, user.password)
@@ -68,7 +68,7 @@ module.exports.login = (req, res, next) => {
           return Promise.reject(new WrongCredentials(ValidationMessage.credentials));
         }
         const key = process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev';
-        const token = jwt.sign({_id: user._id}, key, {expiresIn: '7d'});
+        const token = jwt.sign({ _id: user._id }, key, { expiresIn: '7d' });
 
         res.cookie('token', token, {
           maxAge: 3600000 * 24 * 7,
