@@ -23,15 +23,12 @@ module.exports.createCard = (req, res, next) => {
 module.exports.deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .orFail()
-    .then(() => {
-      Card.findOneAndRemove({
-        _id: req.params.cardId,
-        owner: req.user._id,
-      })
-        .orFail(new NotEnoughRights(notEnoughRight))
-        .then((u) => handleOkStatus(u, res))
-        .catch(next);
+    .populate('owner')
+    .then((card) => {
+      if (card.owner._id.toString() !== req.user._id) throw new NotEnoughRights(notEnoughRight);
+      return card.deleteOne();
     })
+    .then((c) => handleOkStatus(c, res))
     .catch(next);
 };
 module.exports.addLike = (req, res, next) => {

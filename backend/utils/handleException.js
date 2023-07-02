@@ -11,6 +11,6 @@ module.exports = (err, req, res, next) => {
       .send({ message: err.message });
   } else {
     res.status(err.statusCode || 500)
-      .send({ message: err.message });
+      .send({ message: err.statusCode === 500 ? 'Something went wrong on the server' : err.message });
   }
 };
